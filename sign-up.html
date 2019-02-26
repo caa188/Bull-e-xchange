@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<style type="text/css">
+body {font-family:Arial, Sans-Serif;}
+#container {width:350px; margin:0 auto;}
+form label {display:inline-block; width:140px;}
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {width:160px;}
+form .line {clear:both;}
+form .line.submit {text-align:right;}
+</style>
+    <title>Sign-up</title>
+</head>
+
+<body>
+<br>
+<div id="container">
+<div style="text-align: center;"></div>
+
+<form name="sign-up" action="sign-up.php" onsubmit="return validateForm()"
+      method="post" accept-charset="UTF-8">
+<div style="text-align: center;"><meta charset="utf-8"><b style="font-weight: normal;" id="docs-internal-guid-d081147f-73a7-55d9-c5ab-16eb661328d1"><img src="https://lh6.googleusercontent.com/h3lug-OkR-84lfCWPOINXCc-pkPfm5GJM-aMO2cfLVxjcDN4Va1MunDy0I2k8Lw7H_j1XpinNfTJYmQPvj1Scx5urRcTbMPmozNtNvlbCIM6bp8iJFySNibM3doOGRNuMXDh" height="137" width="359"></b></div>
+<h1 style="text-align: center; color: rgb(153, 0, 0);">Sign-Up</h1>
+<div style="text-align: right;" class="line"><label style="color: rgb(153, 0, 0);" for="Email">E-Mail Address : </label><input id="Email" name="Email" type="email" required></div><br>
+<div style="text-align: right;" class="line"><label style="color: rgb(153, 0, 0);" for="FirstName">First Name : </label><input id="FirstName" name="FirstName" type="text" required></div><br>
+<div style="text-align: right;" class="line"><label style="color: rgb(153, 0, 0);" for="LastName">Last Name : </label><input id="LastName" name="LastName" type="text" required></div><br>
+<div style="text-align: right;" class="line"><label style="color: rgb(153, 0, 0);" for="pwd">Password : </label><input name="pwd" id="pwd" type="password" required></div><br>
+<div style="text-align: right;" class="line"><label style="color: rgb(153, 0, 0);" for="confirm_pwd">Confirm Password : </label><input id="confirm_pwd" name="confirm_pwd" type="password" required></div>
+<div class="line submit"><input value="Submit" type="submit"></div></form>
+<p>Note: You must use a Mississippi State e-mail address in order
+to register for this website.</p>
+</div>
+
+<script>
+    function validateForm()
+    {
+        var firstname = document.forms["sign-up"]["FirstName"].value;
+        if (firstname == null || firstname == "")
+        {
+            alert("First name is a required field");
+            return false;
+        }
+        var lastname = document.forms["sign-up"]["LastName"].value;
+        if(lastname == null || lastname == "")
+        {
+            alert("Last name is a required field");
+            return false;
+        }
+        var email = document.forms["sign-up"]["Email"].value;
+        if(email == null || email == "")
+        {
+            alert("Email address is a required field");
+            return false;
+        }
+        var res = email.split("@");
+        res = res.pop();
+        if(res != "msstate.edu")
+        {
+            alert("Only MSU email addresses may be used");
+            return false;
+        }
+        var password = document.forms["sign-up"]["pwd"].value;
+        if(password == null || password == "")
+        {
+            alert("Password is a required field");
+            return false;
+        }
+        var confirm_pw = document.forms["sign-up"]["confirm_pwd"].value;
+        if(confirm_pw != password)
+        {
+            alert("Passwords do not match")
+            return false;
+        }
+    }
+</script>
+</body></html>
